@@ -4,7 +4,7 @@
 #define SIZE    1000
 
 int main() {
-    char input[SIZE], output[SIZE];
+    char output[SIZE];
     int c, i, j;
 
     i = 0;
