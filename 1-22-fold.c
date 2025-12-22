@@ -11,7 +11,7 @@ int main() {
     curr_len = 0;
     last_blank_idx = -1;
 
-    while (i < MAX_OUT && (c = getchar()) != EOF) {
+    while (i < MAX_OUT) {
         if (curr_len == MAX_LINE) {
             if (last_blank_idx != -1) {
                 output[last_blank_idx] = '\n';
@@ -19,18 +19,20 @@ int main() {
                 last_blank_idx = -1;
             } else {
                 output[i] = '\n';
+                ++i;
                 curr_len = 0;
-                ++i; // Advance i so c can be added after new space
             }
-        }
+        } else {
+            c = getchar();
 
-        if (c == ' ') {
-            last_blank_idx = i;
-        }
+            if (c == EOF) {
+                break;
+            }
 
-        output[i] = c;
-        ++curr_len;
-        ++i;
+            output[i] = c;
+            ++i;
+            ++curr_len;
+        }
     }
 
     output[i] = '\0';
