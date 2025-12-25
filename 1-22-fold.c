@@ -16,6 +16,7 @@ int main() {
             if (last_blank_idx != -1) {
                 output[last_blank_idx] = '\n';
                 curr_len = i - last_blank_idx;
+                printf("%d\n", curr_len);
                 last_blank_idx = -1;
             } else {
                 output[i] = '\n';
@@ -27,6 +28,14 @@ int main() {
 
             if (c == EOF) {
                 break;
+            }
+
+            if (c == ' ') {
+                // Avoid consecutive spaces, or adding a space after a line break
+                // if (i > 0 && ((output[i-1]) == ' ' || (output[i-1]) == '\n')) {
+                //     continue;
+                // }
+                last_blank_idx = i;
             }
 
             output[i] = c;
