@@ -1,14 +1,18 @@
 #include <stdio.h>
+#include <limits.h>
 
 /* Header found at /usr/include/limits.h */
 
 void get_char_ranges();
+void get_int_ranges();
 
 void get_char_ranges() {
     unsigned char uchar;
     signed char schar;
 
     schar = -1;
+
+    printf("-- by calculation --\n");
 
     while (schar < 0) {
         --schar;
@@ -38,7 +42,16 @@ void get_char_ranges() {
     printf("uchar high: %d\n", --uchar);
 }
 
+void get_int_ranges() {
+    printf("-- by referencing limits.h --\n");
+    printf("INT_MIN %d\n", INT_MIN);
+    printf("INT_MAX %d\n", INT_MAX);
+    printf("UINT_MIN 0\n");
+    printf("UINT_MAX %u\n", UINT_MAX);
+}
+
 int main() {
     get_char_ranges();
+    get_int_ranges();
     return 0;
 }
